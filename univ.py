@@ -79,7 +79,7 @@ if __name__ == '__main__':
             embed.description += "Salle: {}\n".format(nextLesson[2])
             await client.edit_message(msg, embed=embed)
         elif message.content.startswith(".day"):
-            embed = discord.Embed(title="Prochain journée de cours", description="Chargement en cours...", colour=discord.Colour.dark_red())
+            embed = discord.Embed(title="Prochaine journée de cours", description="Chargement en cours...", colour=discord.Colour.dark_red())
             embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
             msg = await client.send_message(message.channel, embed=embed)
 
@@ -100,6 +100,7 @@ if __name__ == '__main__':
                             embed.description += "Le {} de {} à {}\n".format(dayLesson[3], dayLesson[4], dayLesson[5])
                             embed.description += "Professeur: {}\n".format(dayLesson[2])
                             embed.description += "Salle: {}\n".format(dayLesson[1])
+                            embed.title = "{}".format(nextDay)
                     else:
                         embed.description = "Aucun cours"
             else:
@@ -133,6 +134,7 @@ if __name__ == '__main__':
             embed = discord.Embed(title="Test", description="Hello world !", colour=discord.Colour.dark_red())
             embed.set_author(name=message.author.name, icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed)
-
+        
+        
     with open("token.txt") as file:
         client.run(file.read())
